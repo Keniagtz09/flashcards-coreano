@@ -1,0 +1,43 @@
+<div class="container py-5 d-flex flex-column align-items-center justify-content-center min-vh-100">
+  
+  <div class="w-100 style-max-width mb-4">
+    <button routerLink="/dashboard" class="btn btn-link p-0 text-muted text-decoration-none">
+      <i class="bi bi-chevron-left"></i> Volver al Dashboard
+    </button>
+  </div>
+
+  <div class="card p-5 border-0 shadow-sm text-center mb-4 w-100 style-max-width flashcard-main-card">
+    <span class="badge bg-light text-secondary rounded-pill mb-3 align-self-center px-3 py-2 text-uppercase font-tracking">
+      Nivel 1: Opción Múltiple
+    </span>
+    
+    <h1 class="display-3 fw-bold my-4 text-dark font-korean">{{ tarjetaActual.coreano }}</h1>
+    <p class="text-muted fst-italic mb-2">Pronunciación: [{{ tarjetaActual.pronunciacion }}]</p>
+  </div>
+
+  <div class="w-100 style-max-width">
+    <div class="row g-3">
+      @for (opcion of opciones; track opcion) {
+        <div class="col-6">
+          <button (click)="verificarRespuesta(opcion)" 
+                  [disabled]="respondido"
+                  class="btn btn-light w-100 py-3 shadow-sm text-center px-4 option-btn border">
+            {{ opcion }}
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+
+  @if (mensaje) {
+    <div class="mt-4 text-center">
+      <p class="fw-bold fs-5 mb-3" [ngClass]="mensaje.includes('Correcto') ? 'text-success' : 'text-danger'">
+        {{ mensaje }}
+      </p>
+      <button (click)="cargarNuevaTarjeta()" class="btn btn-dark rounded-pill px-5 shadow">
+        Siguiente Tarjeta
+      </button>
+    </div>
+  }
+
+</div>

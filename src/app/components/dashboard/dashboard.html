@@ -1,0 +1,95 @@
+<div class="container py-5">
+  
+  <div class="text-center mb-5">
+    <h1 class="display-5 fw-bold text-secondary">Mi Panel de Estudio</h1>
+    <p class="text-muted fs-5">Progreso diario en Kali Days — 여행 라이프</p>
+  </div>
+
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-8 text-center">
+      <h3 class="h5 mb-3 text-secondary text-uppercase tracking-wide">¿Qué dirección deseas practicar hoy?</h3>
+      <div class="d-flex justify-content-center gap-3">
+        <button class="btn btn-outline-primary px-4 py-2 rounded-pill shadow-sm">
+          Español <i class="bi bi-arrow-right"></i> Coreano
+        </button>
+        <button class="btn btn-outline-primary px-4 py-2 rounded-pill shadow-sm">
+          Coreano <i class="bi bi-arrow-right"></i> Español
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 mb-5">
+    <div class="col-md-4">
+      <div class="card h-100 border-0 shadow-sm text-center p-4 card-stat-bg">
+        <div class="card-body">
+          <h2 class="display-4 fw-bold text-dark">5</h2>
+          <p class="card-text text-muted text-uppercase small mb-0 fw-semibold">Días de Racha 🔥</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 border-0 shadow-sm text-center p-4 card-stat-bg">
+        <div class="card-body">
+          <h2 class="display-4 fw-bold text-dark">24 / 50</h2>
+          <p class="card-text text-muted text-uppercase small mb-0 fw-semibold">Tarjetas Memorizadas 📇</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 border-0 shadow-sm text-center p-4 card-stat-bg">
+        <div class="card-body">
+          <h2 class="display-4 fw-bold text-dark">88%</h2>
+          <p class="card-text text-muted text-uppercase small mb-0 fw-semibold">Porcentaje de Acierto 🎯</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm p-4 mb-5 bg-white">
+    <h3 class="h5 text-secondary mb-4 text-center text-md-start">Mis Medallas de Nivel</h3>
+    <div class="row g-4 text-center">
+      
+      <div class="col-md-4">
+        <div class="p-4 rounded-3 badge-container badge-blue">
+          <div class="fs-1 mb-2">🌱</div>
+          <h4 class="h6 fw-bold mb-1">Nivel Básico</h4>
+          <span class="badge bg-white text-dark shadow-sm px-3 rounded-pill">Completado</span>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="p-4 rounded-3 badge-container badge-pink opacity-75">
+          <div class="fs-1 mb-2">🌸</div>
+          <h4 class="h6 fw-bold mb-1">Nivel Intermedio</h4>
+          <span class="badge bg-light text-muted px-3 rounded-pill">En Curso</span>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="p-4 rounded-3 badge-container badge-purple opacity-50">
+          <div class="fs-1 mb-2">🌌</div>
+          <h4 class="h6 fw-bold mb-1">Nivel Avanzado</h4>
+          <span class="badge bg-light text-muted px-3 rounded-pill">Bloqueado</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="text-center">
+    <h3 class="h5 mb-4 text-secondary">Modos de Aprendizaje</h3>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <button (click)="irANivel('level-one')" class="btn btn-light px-4 py-3 shadow-sm border border-2 border-transparent hover-card">
+        <strong>Nivel 1:</strong> Juega Aprendiendo
+      </button>
+      <button (click)="irANivel('level-two')" class="btn btn-light px-4 py-3 shadow-sm border border-2 border-transparent hover-card">
+        <strong>Nivel 2:</strong> Práctica de Escritura
+      </button>
+      <button (click)="irANivel('level-three')" class="btn btn-light px-4 py-3 shadow-sm border border-2 border-transparent hover-card">
+        <strong>Nivel 3:</strong> Repaso Tradicional
+      </button>
+    </div>
+  </div>
+
+</div>

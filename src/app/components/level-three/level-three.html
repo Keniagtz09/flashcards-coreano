@@ -1,0 +1,48 @@
+<div class="container py-5 d-flex flex-column align-items-center justify-content-center min-vh-100">
+  
+  <div class="w-100 style-max-width mb-4">
+    <button routerLink="/dashboard" class="btn btn-link p-0 text-muted text-decoration-none">
+      <i class="bi bi-chevron-left"></i> Volver al Dashboard
+    </button>
+  </div>
+
+  <div class="card p-5 border-0 shadow-sm text-center mb-4 w-100 style-max-width flashcard-main-card bg-white position-relative">
+    <span class="badge bg-light text-secondary rounded-pill mb-3 align-self-center px-3 py-2 text-uppercase font-tracking">
+      Nivel 3: Repaso Tradicional (SRS)
+    </span>
+    
+    <div class="my-4">
+      <h1 class="display-2 fw-bold text-dark font-korean">{{ tarjetaActual.coreano }}</h1>
+      
+      @if (mostrarReverso) {
+        <hr class="my-4 border-light-subtle">
+        <h3 class="h4 text-success fw-normal">{{ tarjetaActual.espanol }}</h3>
+        <p class="text-muted fst-italic small mb-0">Pronunciación: [{{ tarjetaActual.pronunciacion }}]</p>
+      } @else {
+        <div style="height: 94px; display: flex; align-items: center; justify-content: center;">
+          <p class="text-muted fst-italic small mb-0">Piensa la respuesta antes de voltear</p>
+        </div>
+      }
+    </div>
+
+    <button (click)="voltearTarjeta()" class="btn btn-outline-secondary btn-sm rounded-pill px-4 py-2 mt-2 align-self-center">
+      <i class="bi bi-arrow-counterclockwise"></i> {{ mostrarReverso ? 'Ocultar Respuesta' : 'Voltear Tarjeta' }}
+    </button>
+  </div>
+
+  <div class="w-100 style-max-width">
+    <div class="row g-3">
+      <div class="col-6">
+        <button (click)="calificar(false)" class="btn btn-danger-pastel w-100 py-3 shadow-sm fw-bold border-0 text-white">
+          <i class="bi bi-x-circle me-2"></i> Fallé / Recordar Mañana
+        </button>
+      </div>
+      <div class="col-6">
+        <button (click)="calificar(true)" class="btn btn-success-pastel w-100 py-3 shadow-sm fw-bold border-0 text-white">
+          <i class="bi bi-check-circle me-2"></i> Acerté / Espaciar Repaso
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

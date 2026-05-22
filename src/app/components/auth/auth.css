@@ -1,0 +1,60 @@
+.auth-card {
+  border-radius: 24px !important;
+  background-color: #FFFFFF;
+}
+
+.brand-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 600;
+  color: #4A5568;
+  letter-spacing: -1px;
+}
+
+.brand-subtitle {
+  font-size: 0.9rem;
+  color: #A0AEC0;
+  letter-spacing: 2px;
+}
+
+.nav-tab-btn {
+  color: #A0AEC0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+}
+
+.nav-tab-btn.active {
+  color: #4A5568 !important;
+  font-weight: 600;
+  border-bottom: 2px solid #A2B9B1;
+}
+
+.form-custom-label {
+  font-size: 0.85rem;
+  color: #718096;
+  font-weight: 500;
+}
+
+.form-custom-input {
+  border-radius: 12px !important;
+  border: 1px solid #E2E8F0 !important;
+  padding: 10px 14px;
+  background-color: #F8FAFC;
+}
+
+.form-custom-input:focus {
+  box-shadow: 0 0 0 3px rgba(162, 185, 177, 0.2) !important;
+  border-color: #A2B9B1 !important;
+  background-color: #FFFFFF;
+}
+
+.btn-custom-submit {
+  background-color: #A2B9B1 !important; /* Color de acento Sage */
+  color: white !important;
+  border-radius: 12px !important;
+  padding: 12px;
+  font-weight: 600;
+  border: none;
+}

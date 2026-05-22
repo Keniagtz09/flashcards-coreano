@@ -1,0 +1,169 @@
+/* Contenedor principal con el degradado unificado de Kali Days */
+.level-wrapper {
+  background: linear-gradient(135deg, #2b0054 0%, #12002b 100%);
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 2rem 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Luces de fondo orgánicas */
+.level-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #8a00e6 0%, rgba(138, 0, 230, 0) 70%);
+  top: -10%;
+  left: -5%;
+  filter: blur(60px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.level-wrapper::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #aa00ff 0%, rgba(170, 0, 255, 0) 70%);
+  bottom: -10%;
+  right: -5%;
+  filter: blur(70px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.container-study {
+  position: relative;
+  z-index: 10;
+  max-width: 550px;
+  width: 100%;
+}
+
+/* Botón de retorno superior */
+.btn-back {
+  background: rgba(255, 255, 255, 0.1);
+  color: #d1b3ff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.btn-back:hover {
+  background: white;
+  color: #2b0054;
+  border-color: white;
+}
+
+/* Tarjeta contenedora de la palabra central */
+.flashcard-container {
+  background: white;
+  border-radius: 28px;
+  padding: 3rem 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Tipografía Coreana */
+.korean-text {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 3.8rem;
+  color: #1a0033;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+/* Botones de Opción Múltiple Minimalistas */
+.btn-option-multiple {
+  background-color: white;
+  color: #1a0033;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-option-multiple:hover:not([disabled]) {
+  background-color: #f3ebff;
+  border-color: #aa00ff;
+  color: #7a00e6;
+  transform: translateY(-2px);
+}
+
+.btn-option-multiple:disabled {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #a0a0a0;
+  border-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+/* Colores de retroalimentación legibles sobre fondo oscuro */
+.text-success-neon {
+  color: #69f0ae !important;
+  text-shadow: 0 0 10px rgba(105, 240, 174, 0.2);
+}
+
+.text-danger-neon {
+  color: #ff5252 !important;
+  text-shadow: 0 0 10px rgba(255, 82, 82, 0.2);
+}
+
+/* Botón Siguiente Tarjeta */
+.btn-next-card {
+  background: white;
+  color: #1a0033;
+  border: none;
+  padding: 0.8rem 2.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-next-card:hover {
+  background: #aa00ff;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.feedback-area {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.font-tracking {
+  letter-spacing: 1.5px;
+}
+
+/* Panel de analíticas minimalista */
+.stats-panel {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+/* Iconos de insignias */
+.insignia-icon {
+  font-size: 1.3rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.6rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}

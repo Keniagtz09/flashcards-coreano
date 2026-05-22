@@ -16,6 +16,10 @@ export class LevelThreeComponent implements OnInit {
   tarjetaActual!: Flashcard;
   mostrarReverso: boolean = false;
 
+  // Variables de analíticas para la sesión actual
+  aciertos: number = 0;
+  errores: number = 0;
+
   constructor(private srsService: SrsService) {}
 
   ngOnInit() {
@@ -33,10 +37,18 @@ export class LevelThreeComponent implements OnInit {
 
   calificar(acierto: boolean) {
     if (acierto) {
+      this.aciertos++;
       console.log(`Tarjeta [${this.tarjetaActual.coreano}] marcada como: ACERTADA. Se programa para mayor espacio de tiempo.`);
     } else {
+      this.errores++;
       console.log(`Tarjeta [${this.tarjetaActual.coreano}] marcada como: FALLADA. Regresa a revisión inmediata.`);
     }
     this.cargarNuevaTarjeta();
+  }
+
+  calcularEfectividad(): number {
+    const total = this.aciertos + this.errores;
+    if (total === 0) return 0;
+    return Math.round((this.aciertos / total) * 100);
   }
 }

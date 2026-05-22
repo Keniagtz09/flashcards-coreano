@@ -19,6 +19,10 @@ export class LevelTwoComponent implements OnInit {
   mensaje: string = '';
   respondido: boolean = false;
 
+  // Variables de analíticas para la sesión actual
+  aciertos: number = 0;
+  errores: number = 0;
+
   constructor(private srsService: SrsService) {}
 
   ngOnInit() {
@@ -42,9 +46,17 @@ export class LevelTwoComponent implements OnInit {
     const correctaLimpia = this.tarjetaActual.espanol.toLowerCase();
 
     if (respuestaLimpia === correctaLimpia || correctaLimpia.includes(respuestaLimpia) && respuestaLimpia.length > 2) {
+      this.aciertos++;
       this.mensaje = '¡Correcto! ✍️ Perfecto, ortografía exacta.';
     } else {
+      this.errores++;
       this.mensaje = `Incorrecto 📝 La respuesta exacta era: ${this.tarjetaActual.espanol}`;
     }
+  }
+
+  calcularEfectividad(): number {
+    const total = this.aciertos + this.errores;
+    if (total === 0) return 0;
+    return Math.round((this.aciertos / total) * 100);
   }
 }

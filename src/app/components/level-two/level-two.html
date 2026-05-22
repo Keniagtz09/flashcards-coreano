@@ -1,48 +1,74 @@
-<div class="container py-5 d-flex flex-column align-items-center justify-content-center min-vh-100">
+<div class="level-wrapper">
   
-  <div class="w-100 style-max-width mb-4">
-    <button routerLink="/dashboard" class="btn btn-link p-0 text-muted text-decoration-none">
-      <i class="bi bi-chevron-left"></i> Volver al Dashboard
+  <div class="position-absolute top-0 start-0 p-4">
+    <button routerLink="/dashboard" class="btn btn-back">
+      <i class="bi bi-chevron-left me-1"></i> Volver al Dashboard
     </button>
   </div>
 
-  <div class="card p-5 border-0 shadow-sm text-center mb-4 w-100 style-max-width flashcard-main-card">
-    <span class="badge bg-light text-secondary rounded-pill mb-3 align-self-center px-3 py-2 text-uppercase font-tracking">
-      Nivel 2: Escritura activa
-    </span>
-    
-    <h1 class="display-3 fw-bold my-4 text-dark font-korean">{{ tarjetaActual.coreano }}</h1>
-    <p class="text-muted fst-italic mb-2">Escribe la traducción al Español</p>
-  </div>
+  <div class="container-study">
 
-  <div class="w-100 style-max-width">
-    <div class="card p-4 border-0 shadow-sm bg-white">
-      <div class="mb-3">
-        <input type="text" 
-               [(ngModel)]="respuestaUsuario" 
-               [disabled]="respondido"
-               (keyup.enter)="verificarEscritura()"
-               class="form-control form-custom-input text-center py-3 fs-5" 
-               placeholder="Escribe tu respuesta aquí...">
+    <div class="stats-panel d-flex justify-content-between align-items-center mb-4 px-4 py-3">
+      <div class="d-flex gap-3 text-white-50 small">
+        <span><i class="bi bi-check-circle-fill text-success-neon me-1"></i> Aciertos: <strong class="text-white">{{ aciertos }}</strong></span>
+        <span><i class="bi bi-x-circle-fill text-danger-neon me-1"></i> Errores: <strong class="text-white">{{ errores }}</strong></span>
+        <span><i class="bi bi-lightning-fill text-warning me-1"></i> Efectividad: <strong class="text-white">{{ calcularEfectividad() }}%</strong></span>
       </div>
       
-      @if (!respondido) {
-        <button (click)="verificarEscritura()" class="btn btn-primary w-100 py-2.5 rounded-pill shadow-sm fw-semibold">
-          Verificar Respuesta
-        </button>
-      }
+      <div class="badge-showcase d-flex gap-2">
+        @if (aciertos >= 1) {
+          <span class="insignia-icon" title="Primeros pasos">🌱</span>
+        }
+        @if (aciertos >= 5) {
+          <span class="insignia-icon" title="Racha Imparable">🔥</span>
+        }
+        @if (calcularEfectividad() >= 80 && aciertos >= 3) {
+          <span class="insignia-icon" title="Estudiante Brillante">✨</span>
+        }
+      </div>
     </div>
-  </div>
+    
+    <div class="flashcard-container text-center mb-4">
+      <span class="badge bg-light text-secondary rounded-pill mb-3 align-self-center px-3 py-2 text-uppercase font-tracking">
+        Nivel 2: Escritura activa
+      </span>
+      
+      <div class="my-3">
+        <h1 class="korean-text mb-2">{{ tarjetaActual.coreano }}</h1>
+        <p class="text-muted fst-italic small mb-0">Escribe la traducción al Español</p>
+      </div>
+    </div>
 
-  @if (mensaje) {
-    <div class="mt-4 text-center">
-      <p class="fw-bold fs-5 mb-3" [ngClass]="mensaje.includes('Correcto') ? 'text-success' : 'text-danger'">
-        {{ mensaje }}
-      </p>
-      <button (click)="cargarNuevaTarjeta()" class="btn btn-dark rounded-pill px-5 shadow">
-        Siguiente Tarjeta
-      </button>
+    <div class="w-100 mb-3">
+      <div class="input-card p-4 border-0 shadow-sm bg-white text-center">
+        <div class="mb-3">
+          <input type="text" 
+                 [(ngModel)]="respuestaUsuario" 
+                 [disabled]="respondido"
+                 (keyup.enter)="verificarEscritura()"
+                 class="form-control text-center py-3 fs-5 custom-input-text" 
+                 placeholder="Escribe tu respuesta aquí...">
+        </div>
+        
+        @if (!respondido) {
+          <button (click)="verificarEscritura()" class="btn btn-verify-answer w-100 py-2.5 rounded-pill shadow-sm fw-semibold">
+            Verificar Respuesta
+          </button>
+        }
+      </div>
     </div>
-  }
+
+    @if (mensaje) {
+      <div class="mt-4 text-center feedback-area">
+        <p class="fw-bold fs-5 mb-3" [ngClass]="mensaje.includes('Correcto') ? 'text-success-neon' : 'text-danger-neon'">
+          {{ mensaje }}
+        </p>
+        <button (click)="cargarNuevaTarjeta()" class="btn btn-next-card rounded-pill px-5 shadow">
+          Siguiente Tarjeta <i class="bi bi-arrow-right ms-1"></i>
+        </button>
+      </div>
+    }
+
+  </div>
 
 </div>

@@ -31,14 +31,26 @@ export class LevelOneComponent implements OnInit {
     this.opciones = this.srsService.getAlternativas(this.tarjetaActual.espanol);
   }
 
-  verificarRespuesta(opcion: string) {
-    if (this.respondido) return;
-    
-    this.respondido = true;
-    if (opcion === this.tarjetaActual.espanol) {
-      this.mensaje = '¡Correcto! ✨ 잘했어요 (Buen trabajo)';
-    } else {
-      this.mensaje = `Incorrecto 🙊 La respuesta era: ${this.tarjetaActual.espanol}`;
-    }
+// 1. Asegúrate de declarar estas dos variables arriba del constructor:
+aciertos: number = 0;
+errores: number = 0;
+
+// 2. Modifica tu método existente para que sume los contadores:
+verificarRespuesta(opcion: string) {
+  if (opcion === this.tarjetaActual.espanol) {
+    this.aciertos++;
+    this.mensaje = '¡Correcto!';
+  } else {
+    this.errores++;
+    this.mensaje = `Incorrecto. La respuesta era: ${this.tarjetaActual.espanol}`;
   }
+  this.respondido = true;
+}
+
+// 3. Pega este bloque completo al final de tu componente (antes de la última llave '}'):
+calcularEfectividad(): number {
+  const total = this.aciertos + this.errores;
+  if (total === 0) return 0;
+  return Math.round((this.aciertos / total) * 100);
+}
 }

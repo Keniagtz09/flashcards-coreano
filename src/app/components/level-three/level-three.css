@@ -1,0 +1,149 @@
+/* Contenedor principal con el degradado unificado de Kali Days */
+.level-wrapper {
+  background: linear-gradient(135deg, #2b0054 0%, #12002b 100%);
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 2rem 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Luces de fondo orgánicas */
+.level-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #8a00e6 0%, rgba(138, 0, 230, 0) 70%);
+  top: -10%;
+  left: -5%;
+  filter: blur(60px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.level-wrapper::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #aa00ff 0%, rgba(170, 0, 255, 0) 70%);
+  bottom: -10%;
+  right: -5%;
+  filter: blur(70px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.container-study {
+  position: relative;
+  z-index: 10;
+  max-width: 550px;
+  width: 100%;
+}
+
+/* Botón de retorno superior */
+.btn-back {
+  background: rgba(255, 255, 255, 0.1);
+  color: #d1b3ff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.btn-back:hover {
+  background: white;
+  color: #2b0054;
+  border-color: white;
+}
+
+/* Tarjeta contenedora de la Flashcard */
+.flashcard-container {
+  background: white;
+  border-radius: 28px;
+  padding: 3.5rem 2.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Tipografía Coreana */
+.korean-text {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 3.8rem;
+  color: #1a0033;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+/* Texto en Español */
+.spanish-text {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+/* Área contenedora para mantener la altura fija si el texto está oculto */
+.placeholder-text-area {
+  height: 94px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos de botones pastel */
+.btn-danger-pastel {
+  background-color: #ff6b6b;
+  border-radius: 16px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-danger-pastel:hover {
+  background-color: #e65c5c;
+  transform: translateY(-1px);
+}
+
+.btn-success-pastel {
+  background-color: #51cf66;
+  border-radius: 16px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-success-pastel:hover {
+  background-color: #40c057;
+  transform: translateY(-1px);
+}
+
+.font-tracking {
+  letter-spacing: 1.5px;
+}
+
+/* Panel de analíticas minimalista */
+.stats-panel {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+/* Iconos de insignias */
+.insignia-icon {
+  font-size: 1.3rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.6rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}

@@ -1,60 +1,101 @@
-.auth-card {
-  border-radius: 24px !important;
-  background-color: #FFFFFF;
+/* Contenedor principal con el gradiente oscuro de fondo */
+.auth-wrapper {
+  background: linear-gradient(135deg, #2b0054 0%, #12002b 100%);
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
 }
 
+/* Esfera difuminada izquierda (Tono neón) */
+.auth-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #8a00e6 0%, rgba(138, 0, 230, 0) 70%);
+  top: -10%;
+  left: -10%;
+  filter: blur(40px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Esfera difuminada derecha (Tono violeta brillante) */
+.auth-wrapper::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #aa00ff 0%, rgba(170, 0, 255, 0) 70%);
+  bottom: -20%;
+  right: -10%;
+  filter: blur(50px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Tarjeta contenedora blanca con bordes muy redondeados */
+.auth-card {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 3.5rem 3rem;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 10;
+}
+
+/* Estilos de tipografía de la marca */
 .brand-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
-  color: #4A5568;
-  letter-spacing: -1px;
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 2.8rem;
+  color: #1a0033;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
 }
 
 .brand-subtitle {
   font-size: 0.9rem;
-  color: #A0AEC0;
+  color: #330066;
   letter-spacing: 2px;
+  font-weight: 500;
+  margin-bottom: 2rem;
 }
 
-.nav-tab-btn {
-  color: #A0AEC0;
-  text-decoration: none;
-  font-weight: 500;
+/* Inputs minimalistas */
+.custom-input {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
   font-size: 1rem;
-  border-bottom: 2px solid transparent;
-  border-radius: 0;
+  transition: all 0.3s ease;
 }
 
-.nav-tab-btn.active {
-  color: #4A5568 !important;
-  font-weight: 600;
-  border-bottom: 2px solid #A2B9B1;
+.custom-input:focus {
+  border-color: #aa00ff;
+  box-shadow: 0 0 0 3px rgba(170, 0, 255, 0.1);
+  outline: none;
 }
 
-.form-custom-label {
-  font-size: 0.85rem;
-  color: #718096;
-  font-weight: 500;
-}
-
-.form-custom-input {
-  border-radius: 12px !important;
-  border: 1px solid #E2E8F0 !important;
-  padding: 10px 14px;
-  background-color: #F8FAFC;
-}
-
-.form-custom-input:focus {
-  box-shadow: 0 0 0 3px rgba(162, 185, 177, 0.2) !important;
-  border-color: #A2B9B1 !important;
-  background-color: #FFFFFF;
-}
-
-.btn-custom-submit {
-  background-color: #A2B9B1 !important; /* Color de acento Sage */
-  color: white !important;
-  border-radius: 12px !important;
-  padding: 12px;
-  font-weight: 600;
+/* Botón oscuro estilizado */
+.btn-dark-auth {
+  background: #1a0033;
+  color: #ffffff;
   border: none;
+  border-radius: 50px;
+  padding: 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-dark-auth:hover {
+  background: #2b0054;
+  transform: translateY(-1px);
 }

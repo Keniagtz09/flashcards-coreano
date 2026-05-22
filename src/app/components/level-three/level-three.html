@@ -1,48 +1,72 @@
-<div class="container py-5 d-flex flex-column align-items-center justify-content-center min-vh-100">
+<div class="level-wrapper">
   
-  <div class="w-100 style-max-width mb-4">
-    <button routerLink="/dashboard" class="btn btn-link p-0 text-muted text-decoration-none">
-      <i class="bi bi-chevron-left"></i> Volver al Dashboard
+  <div class="position-absolute top-0 start-0 p-4">
+    <button routerLink="/dashboard" class="btn btn-back">
+      <i class="bi bi-chevron-left me-1"></i> Volver al Dashboard
     </button>
   </div>
 
-  <div class="card p-5 border-0 shadow-sm text-center mb-4 w-100 style-max-width flashcard-main-card bg-white position-relative">
-    <span class="badge bg-light text-secondary rounded-pill mb-3 align-self-center px-3 py-2 text-uppercase font-tracking">
-      Nivel 3: Repaso Tradicional (SRS)
-    </span>
-    
-    <div class="my-4">
-      <h1 class="display-2 fw-bold text-dark font-korean">{{ tarjetaActual.coreano }}</h1>
+  <div class="container-study">
+
+    <div class="stats-panel d-flex justify-content-between align-items-center mb-4 px-4 py-3">
+      <div class="d-flex gap-3 text-white-50 small">
+        <span><i class="bi bi-check-circle-fill text-success-neon me-1"></i> Aciertos: <strong class="text-white">{{ aciertos }}</strong></span>
+        <span><i class="bi bi-x-circle-fill text-danger-neon me-1"></i> Errores: <strong class="text-white">{{ errores }}</strong></span>
+        <span><i class="bi bi-lightning-fill text-warning me-1"></i> Efectividad: <strong class="text-white">{{ calcularEfectividad() }}%</strong></span>
+      </div>
       
-      @if (mostrarReverso) {
-        <hr class="my-4 border-light-subtle">
-        <h3 class="h4 text-success fw-normal">{{ tarjetaActual.espanol }}</h3>
-        <p class="text-muted fst-italic small mb-0">Pronunciación: [{{ tarjetaActual.pronunciacion }}]</p>
-      } @else {
-        <div style="height: 94px; display: flex; align-items: center; justify-content: center;">
-          <p class="text-muted fst-italic small mb-0">Piensa la respuesta antes de voltear</p>
+      <div class="badge-showcase d-flex gap-2">
+        @if (aciertos >= 1) {
+          <span class="insignia-icon" title="Primeros pasos">🌱</span>
+        }
+        @if (aciertos >= 5) {
+          <span class="insignia-icon" title="Racha Imparable">🔥</span>
+        }
+        @if (calcularEfectividad() >= 80 && aciertos >= 3) {
+          <span class="insignia-icon" title="Estudiante Brillante">✨</span>
+        }
+      </div>
+    </div>
+    
+    <div class="flashcard-container text-center mb-4">
+      <span class="badge bg-light text-secondary rounded-pill mb-3 align-self-center px-3 py-2 text-uppercase font-tracking">
+        Nivel 3: Repaso Tradicional (SRS)
+      </span>
+      
+      <div class="my-4">
+        <h1 class="korean-text">{{ tarjetaActual.coreano }}</h1>
+        
+        @if (mostrarReverso) {
+          <hr class="my-4 border-light-subtle">
+          <h3 class="spanish-text text-success fw-normal mb-2">{{ tarjetaActual.espanol }}</h3>
+          <p class="text-muted fst-italic small mb-0">Pronunciación: [{{ tarjetaActual.pronunciacion }}]</p>
+        } @else {
+          <div class="placeholder-text-area">
+            <p class="text-muted fst-italic small mb-0">Piensa la respuesta antes de volverla</p>
+          </div>
+        }
+      </div>
+
+      <button (click)="voltearTarjeta()" class="btn btn-outline-secondary btn-sm rounded-pill px-4 py-2 mt-2 align-self-center">
+        <i class="bi bi-arrow-counterclockwise"></i> {{ mostrarReverso ? 'Ocultar Respuesta' : 'Voltear Tarjeta' }}
+      </button>
+    </div>
+
+    <div class="w-100">
+      <div class="row g-3">
+        <div class="col-6">
+          <button (click)="calificar(false)" class="btn btn-danger-pastel w-100 py-3 shadow-sm fw-bold border-0 text-white">
+            <i class="bi bi-x-circle me-2"></i> Fallé / Recordar Mañana
+          </button>
         </div>
-      }
-    </div>
-
-    <button (click)="voltearTarjeta()" class="btn btn-outline-secondary btn-sm rounded-pill px-4 py-2 mt-2 align-self-center">
-      <i class="bi bi-arrow-counterclockwise"></i> {{ mostrarReverso ? 'Ocultar Respuesta' : 'Voltear Tarjeta' }}
-    </button>
-  </div>
-
-  <div class="w-100 style-max-width">
-    <div class="row g-3">
-      <div class="col-6">
-        <button (click)="calificar(false)" class="btn btn-danger-pastel w-100 py-3 shadow-sm fw-bold border-0 text-white">
-          <i class="bi bi-x-circle me-2"></i> Fallé / Recordar Mañana
-        </button>
-      </div>
-      <div class="col-6">
-        <button (click)="calificar(true)" class="btn btn-success-pastel w-100 py-3 shadow-sm fw-bold border-0 text-white">
-          <i class="bi bi-check-circle me-2"></i> Acerté / Espaciar Repaso
-        </button>
+        <div class="col-6">
+          <button (click)="calificar(true)" class="btn btn-success-pastel w-100 py-3 shadow-sm fw-bold border-0 text-white">
+            <i class="bi bi-check-circle me-2"></i> Acerté / Espaciar Repaso
+          </button>
+        </div>
       </div>
     </div>
+
   </div>
 
 </div>

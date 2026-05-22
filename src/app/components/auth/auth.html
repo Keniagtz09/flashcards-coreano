@@ -1,39 +1,27 @@
-<div class="container d-flex justify-content-center align-content-center min-vh-100 align-items-center">
-  <div class="card p-4 shadow-sm border-0 auth-card" style="max-width: 400px; width: 100%;">
+<div class="auth-wrapper">
+  
+  <div class="auth-card text-center">
     
-    <div class="text-center mb-4">
-      <h2 class="brand-title">Kali Days</h2>
-      <p class="brand-subtitle">여행 라이프 (Yeohaeng Life)</p>
+    <h1 class="brand-title">Kaelamin Flashcards</h1>
+    <p class="brand-subtitle text-uppercase">즐겁게 공부하세요</p>
+    
+    <div class="mb-4 text-start">
+      <input type="email" class="form-control custom-input mb-3" placeholder="Email">
+      <input type="password" class="form-control custom-input" placeholder="Password">
     </div>
 
-    <div class="d-flex justify-content-center mb-4">
-      <button class="btn btn-link nav-tab-btn" [class.active]="isLoginMode" (click)="isLoginMode = true">Ingresar</button>
-      <button class="btn btn-link nav-tab-btn" [class.active]="!isLoginMode" (click)="isLoginMode = false">Registrarse</button>
+    <button (click)="accesoInvitado()" class="btn btn-dark-auth w-100 mb-4">
+      Entrar como Invitado <i class="bi bi-arrow-right ms-1"></i>
+    </button>
+
+    <div class="bg-light p-3 rounded-3 text-center border border-light-subtle">
+      <p class="mb-1 small fw-bold text-dark">Evaluación académica</p>
+      <p class="mb-0 small text-muted">
+        Intente un texto credencial:<br>
+        <code class="text-dark">admin@kali.com / Kali2026*</code>
+      </p>
     </div>
-
-    <form (ngSubmit)="onSubmit()">
-      
-      @if (!isLoginMode) {
-        <div class="mb-3">
-          <label class="form-label form-custom-label">Nombre de perfil</label>
-          <input type="text" name="nombre" [(ngModel)]="nombre" class="form-control form-custom-input" placeholder="Tu nombre" required>
-        </div>
-      }
-
-      <div class="mb-3">
-        <label class="form-label form-custom-label">Correo electrónico</label>
-        <input type="email" name="correo" [(ngModel)]="correo" class="form-control form-custom-input" placeholder="ejemplo@correo.com" required>
-      </div>
-
-      <div class="mb-3 mb-4">
-        <label class="form-label form-custom-label">Contraseña</label>
-        <input type="password" name="contrasena" [(ngModel)]="contrasena" class="form-control form-custom-input" placeholder="••••••••" required>
-      </div>
-
-      <button type="submit" class="btn w-100 btn-custom-submit">
-        {{ isLoginMode ? 'Entrar a mi mazo' : 'Crear cuenta de estudio' }}
-      </button>
-    </form>
 
   </div>
+
 </div>

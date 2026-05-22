@@ -10,11 +10,20 @@ import { Router } from '@angular/router';
   styleUrl: './dashboard.css'
 })
 export class DashboardComponent {
-  
-  // Inyectamos el router para poder cambiar de pantalla con TypeScript
+
   constructor(private router: Router) {}
 
-  irANivel(ruta: string) {
-    this.router.navigate([`/${ruta}`]);
+irANivel(nivel: number) {
+    if (nivel === 1) {
+      this.router.navigate(['/level-one']);
+    } else if (nivel === 2) {
+      this.router.navigate(['/level-two']);
+    } else if (nivel === 3) {
+      this.router.navigate(['/level-three']);
+    }
+  }
+
+  salir() {
+    this.router.navigate(['/auth']);
   }
 }
